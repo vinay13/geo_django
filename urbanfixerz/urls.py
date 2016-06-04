@@ -18,10 +18,6 @@ from django.conf.urls import include,url
 from django.contrib import admin
 
 urlpatterns = [
-
-    url(r'^vendor/',include('vendor.urls')),
-    url(r'^category/',include('category.urls')),
-    url(r'^jobs/',include('jobs.urls')),
-    url(r'^customer/',include('customer.urls')),
+    url(r'^provider/',include('provider.urls')),
     url(r'^admin/',include(admin.site.urls)),
 ]

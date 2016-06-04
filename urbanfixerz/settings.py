@@ -38,15 +38,20 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vendor',
-    'category',
-    'jobs',
-    'customer',
+    'django.contrib.gis',
     'rest_framework',
+    'corsheaders',
+    'provider',
+    'rest_framework_gis',
 )
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 MIDDLEWARE_CLASSES = (
+
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -82,8 +87,13 @@ WSGI_APPLICATION = 'urbanfixerz.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.mysql',
+            'NAME': 'urbanfixerz$moziodb',
+            'TEST_NAME':'urbanfixerz$unittest',
+            'USER': 'urbanfixerz',
+            'PASSWORD': 'omglol123#',
+            'HOST': 'urbanfixerz.mysql.pythonanywhere-services.com',
+            'PORT': 3306,
     }
 }
 
@@ -100,6 +110,25 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
+
+
+
+
+
+
+
 
 
 # Static files (CSS, JavaScript, Images)
