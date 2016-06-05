@@ -4,7 +4,7 @@ from django.conf import settings
 
 class Providers(models.Model):
 	name = models.CharField(max_length=77,blank=True)
-	email=models.CharField(max_length=47,blank=True)
+	email=models.EmailField()
 	phone_no=models.CharField(max_length=17,blank=True)
 	language=models.CharField(max_length=17,blank=True)
 	Currency=models.CharField(max_length=132,blank=True)
