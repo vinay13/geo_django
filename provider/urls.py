@@ -10,6 +10,8 @@ router.register(r'servicearea',ServiceAreaViewSet)
 
 urlpatterns=patterns('',
     url(r'',include(router.urls)),
+    url(r'^search_areas/(?P<lat>(\-?\d+(\.\d+)?))/(?P<lon>(\-?\d+(\.\d+)?))/$',
+        views.SearchAreas.as_view(), name='search_areas'),
 
 
 )
