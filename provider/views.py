@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from provider.models import Providers,ServiceArea
 from provider.serializers import ProviderSerializer,ServiceAreaSerializer
 from rest_framework import filters,viewsets
-
+from django.contrib.gis.geos import Point
 
 
 
